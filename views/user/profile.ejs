@@ -1,0 +1,62 @@
+<div class="profile">
+    <div class="profile-info">
+  
+        <h2>Profile</h2>
+        <a href="/user/edit?id=<%= currentUser._id %>" class="btn btn-outline-primary"> Edit Profile </a>
+        <a href="/user/editPassword?id=<%= currentUser._id %>" class="btn btn-outline-primary"> Change Password </a>
+    
+        <table>
+            <tr>
+                <td>First Name:</td>
+                <td> <%= currentUser.firstName %> </td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td> <%= currentUser.lastName %> </td>
+            </tr>
+            <tr>
+                <td>Email Address:</td>
+                <td> <%= currentUser.emailAddress %> </td>
+            </tr>
+            <tr>
+                <td>Username:</td>
+                <td> <%= currentUser.username %> </td>
+            </tr>
+           
+        </table>
+    </div>
+
+
+    <div class="profile-review">
+        <h2 class="title">Your Reviews:</h2>
+
+        <% user[0].review.forEach(function(review) { %>
+            <hr>
+            <div class="review"> 
+                
+                <div class="topline"> 
+                    <div class="topline-left">
+                    <% review.wine.forEach(function(wine) { %>
+                    <h4> <%= wine.name %> </h4> 
+                    <% }) %>
+                     Rating: <%= review.rating %>/5
+                    </div> 
+                    <div> 
+                        <a href="/review/edit?id=<%= review._id %>" class="btn btn-outline-primary"> Edit Review </a> 
+                        <a href="/review/delete?id=<%= review._id %>" class="btn btn-outline-primary"> Delete Review </a> 
+                    </div> 
+                </div>
+                
+                <div>
+                    <%= review.comment %>
+                </div> 
+    
+               
+    
+            </div>
+        <% }) %>
+    </div>
+</div>
+
+
+
